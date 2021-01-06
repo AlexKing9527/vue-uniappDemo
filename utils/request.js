@@ -44,14 +44,18 @@ const fetch = (url = '', data = {}, needToken = false, method, loading = true, h
 	return promise;
 }
 
-const request = async function() {
-	let [err, res] = await uni.request({
-		url: requestUrl,
-		dataType: 'text',
-		data: {
-			noncestr: Date.now()
-		}
-	});
+const request = async function(url='', data={}, needToken=false, method='POST', loading=true) {
+	if (needToken) {
+		let [err, res] = await uni.request({
+			url: url,
+			// dataType: 'text',
+			data: data,
+			header: {
+				'Content-Type': 'application/json;charset=UTF-8',
+				uni.getStorageSync('storage_key')
+			}
+		});
+	}
 	if (err) {
 		uni.showModal({
 			content: err.errMsg,
@@ -123,7 +127,7 @@ const upload = function(url = '', data = {}, filePath) {
 }
 
 module.exports = {
-	request,
+	// request,
 	fetch,
 	upload
 }

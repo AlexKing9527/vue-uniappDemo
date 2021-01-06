@@ -1,6 +1,6 @@
 import {
 	request
-} from '../../utils/request.js'
+} from '../../utils/requestAxios.js'
 
 export default {
 	text1(params = {}) {
