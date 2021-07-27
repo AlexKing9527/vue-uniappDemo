@@ -72,7 +72,22 @@
     "mp-toutiao" : {
         "usingComponents" : true
     },
-    "uniStatistics": {  
-        "enable": false
+    "uniStatistics" : {
+        "enable" : false
+    },
+    "h5" : {
+        "router" : {
+            "mode" : "hash"
+        },
+        "devServer": {
+          "https": false,
+          "proxy": {
+            "/msht-api": {
+              "target": "http://192.168.116.87:9006",
+              "changeOrigin": true,
+              "secure": false
+            }
+          }
+        }
     }
 }

@@ -45,7 +45,6 @@ service.interceptors.response.use(res => {
 // 在main.js中放入这段自定义适配器的代码，就可以实现uniapp的app和小程序开发中能使用axios进行跨域网络请求，并支持携带cookie
 axios.defaults.adapter = function(config) {
 	return new Promise((resolve, reject) => {
-		console.log(config)
 		var settle = require('axios/lib/core/settle');
 		var buildURL = require('axios/lib/helpers/buildURL');
 		uni.request({
